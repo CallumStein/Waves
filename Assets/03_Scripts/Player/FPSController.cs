@@ -24,6 +24,9 @@ public class FPSController : MonoBehaviour
     private Vector3 velocity;
     private float pitch = 0f;
 
+    private float highlightCooldown = 0.05f;
+    private float highlightTimer = 0f;
+
     private void OnEnable() => controls.Enable();
     private void OnDisable() => controls.Disable();
 
@@ -54,7 +57,12 @@ public class FPSController : MonoBehaviour
     {
         HandleLook();
         HandleMovement();
-        CheckForInteractable();
+        highlightTimer += Time.deltaTime;
+        if (highlightTimer >= highlightCooldown)
+        {
+            CheckForInteractable();
+            highlightTimer = 0f;
+        }
     }
 
     private void HandleLook()

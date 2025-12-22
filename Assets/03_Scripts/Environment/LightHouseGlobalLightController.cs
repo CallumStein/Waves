@@ -9,8 +9,10 @@ public class LightHouseGlobalLightController : MonoBehaviour
 
     void Update()
     {
-        m_globalLight.intensity =
-            Mathf.Lerp(m_minIntensity, m_maxIntensity,
-            (Mathf.Sin(Time.time * m_speed) + 1f) / 2f);
+        // Pulse global directional lighting object's intensity
+        m_globalLight.intensity = Mathf.Lerp(m_minIntensity, m_maxIntensity, (Mathf.Sin(Time.time * m_speed) + 1f) / 2f);
+
+        //RenderSettings.fogDensity = Mathf.Lerp(0.015f, 0.03f, (Mathf.Sin(Time.time) + 1f) / 2f);
+
     }
 }

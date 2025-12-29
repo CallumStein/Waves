@@ -1,9 +1,13 @@
 using UnityEngine;
+using static GameManagerController;
 
 [RequireComponent(typeof(Renderer))]
 public class InteractableObject : MonoBehaviour, IInteractable, IHighlightable
 {
     private Material mat;
+
+    [Header("Item Settings")]
+    [SerializeField] private CollectibleItem m_itemKey;
 
     [Header("Outline Settings")]
     public Color outlineColor = Color.yellow;
@@ -20,6 +24,7 @@ public class InteractableObject : MonoBehaviour, IInteractable, IHighlightable
     public void Interact()
     {
         Debug.Log($"{name} was interacted with!");
+        GameManagerController.Instance.SetItemCollected(m_itemKey);
     }
 
     public void Highlight(bool state)

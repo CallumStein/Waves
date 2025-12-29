@@ -9,7 +9,7 @@ public class GameManagerController : MonoBehaviour
 
     public enum GameState { Menu, GameOver, Playing, GoalReached }
     public GameState currentState { get; private set; }
-    public enum CollectibleItem { Bear, Gameboy, Noose }
+    public enum CollectibleItem { Bear, Gameboy }
 
     [Header("Managers")]
     [SerializeField] private MusicManagerController m_musicManager;

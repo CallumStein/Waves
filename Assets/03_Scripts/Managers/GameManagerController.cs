@@ -7,9 +7,9 @@ public class GameManagerController : MonoBehaviour
 {
     public static GameManagerController Instance { get; private set; } // Defines Singleton controller
 
-    public enum GameState { Menu, GameOver, Playing, GoalReached }
-    public GameState currentState { get; private set; }
-    public enum CollectibleItem { Bear, Gameboy }
+    public enum GameState { Menu, GameOver, Playing, CompleteEnding, PartialEnding }
+    public GameState m_currentState { get; private set; }
+    public enum CollectibleItem { Bear, Gameboy, Noose }
 
     [Header("Managers")]
     [SerializeField] private MusicManagerController m_musicManager;
@@ -38,6 +38,11 @@ public class GameManagerController : MonoBehaviour
         }
     }
 
+    private void SetGameState(GameState state)
+    {
+        m_currentState = state;
+    }
+
     public void SetItemCollected(CollectibleItem key)
     {
         if (!m_itemsCollected.ContainsKey(key))
@@ -62,5 +67,19 @@ public class GameManagerController : MonoBehaviour
         }
 
         return true;
+    }
+
+    public void EndGame()
+    {
+        if (m_AllItemsCollected)
+        {
+            SetGameState(GameState.CompleteEnding);
+        }
+        else
+        {
+            SetGameState(GameState.PartialEnding);
+        }
+
+        Debug.Log(m_currentState);
     }
 }

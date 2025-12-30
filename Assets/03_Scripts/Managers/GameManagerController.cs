@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using DG.Tweening.Core.Easing;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,6 +12,7 @@ public class GameManagerController : MonoBehaviour
 
     [Header("Managers")]
     [SerializeField] private MusicManagerController m_musicManager;
+    [SerializeField] private UiManagerController m_uiManager;
 
     [Header("Collectable Components")]
     [SerializeField] private bool m_AllItemsCollected = false;
@@ -67,6 +67,12 @@ public class GameManagerController : MonoBehaviour
         }
 
         return true;
+    }
+
+    public void SetGameOver()
+    {
+        m_uiManager.SetStatic(true);
+        Debug.Log("GAME OVER");
     }
 
     public void EndGame()

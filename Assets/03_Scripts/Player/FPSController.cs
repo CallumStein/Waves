@@ -90,6 +90,16 @@ public class FPSController : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
     }
 
+    // When colliding with another trigger object perform an action
+    void OnTriggerEnter(Collider other)
+    {
+        // If the player gets overtaken by the stalker end the game
+        if (other.CompareTag("GameOverBoundary"))
+        {
+            GameManagerController.Instance.SetGameOver();
+        }
+    }
+
     private void TryInteract()
     {
         if (currentTarget != null)

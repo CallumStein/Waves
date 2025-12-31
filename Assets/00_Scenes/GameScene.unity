@@ -208,7 +208,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 63995678}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -3262,7 +3262,7 @@ GameObject:
   - component: {fileID: 1045585766}
   - component: {fileID: 1045585765}
   m_Layer: 5
-  m_Name: MessageText
+  m_Name: EndingMessageText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3307,7 +3307,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ending
+  m_text: "Good Ending \nyou lived a life that's full"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d2656c2dbb6ca8d4fa3814df581963d2, type: 2}
   m_sharedMaterial: {fileID: -243833955728556631, guid: d2656c2dbb6ca8d4fa3814df581963d2, type: 2}
@@ -5582,6 +5582,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_gameOverOverlay: {fileID: 1544090484}
   m_messageOverlay: {fileID: 494438171}
+  m_endingOverlay: {fileID: 1632258457}
 --- !u!1001 &1740707161
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5905,7 +5906,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 20
   m_TargetDisplay: 0
 --- !u!224 &1880642339
 RectTransform:

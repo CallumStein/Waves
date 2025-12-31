@@ -4,6 +4,7 @@ public class UiManagerController : MonoBehaviour
 {
     [SerializeField] private CanvasGroup m_gameOverOverlay;
     [SerializeField] private MessagePopupController m_messageOverlay;
+    [SerializeField] private MessagePopupController m_endingOverlay;
 
 
     private void Update()
@@ -30,9 +31,9 @@ public class UiManagerController : MonoBehaviour
 
     public void ShowEndingMessage(string message)
     {
-        if (m_messageOverlay != null)
+        if (m_endingOverlay != null)
         {
-            m_messageOverlay.ShowEnding(message);
+            m_endingOverlay.ShowEnding(message);
         }
     }
 }

@@ -8,6 +8,7 @@ public class InteractableObject : MonoBehaviour, IInteractable, IHighlightable
 
     [Header("Item Settings")]
     [SerializeField] private CollectibleItem m_itemKey;
+    [SerializeField] [TextArea(5, 5)] private string m_messageText;
 
     [Header("Outline Settings")]
     public Color outlineColor = Color.yellow;
@@ -24,7 +25,7 @@ public class InteractableObject : MonoBehaviour, IInteractable, IHighlightable
     public void Interact()
     {
         Debug.Log($"{name} was interacted with!");
-        GameManagerController.Instance.SetItemCollected(m_itemKey);
+        GameManagerController.Instance.SetItemCollected(m_itemKey, m_messageText);
     }
 
     public void Highlight(bool state)

@@ -43,7 +43,7 @@ public class GameManagerController : MonoBehaviour
         m_currentState = state;
     }
 
-    public void SetItemCollected(CollectibleItem key)
+    public void SetItemCollected(CollectibleItem key, string message = "")
     {
         if (!m_itemsCollected.ContainsKey(key))
         {
@@ -52,8 +52,8 @@ public class GameManagerController : MonoBehaviour
 
         Debug.Log($"Item key found: {key}");
         m_itemsCollected[key] = true;
-
-        m_AllItemsCollected = AreAllItemsCollected(); // Check if everything has been collected
+        m_uiManager.ShowMessage(message);
+        m_AllItemsCollected = AreAllItemsCollected();
     }
 
     public bool AreAllItemsCollected()

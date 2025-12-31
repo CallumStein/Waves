@@ -3,6 +3,7 @@ using UnityEngine;
 public class UiManagerController : MonoBehaviour
 {
     [SerializeField] private CanvasGroup m_gameOverOverlay;
+    [SerializeField] private MessagePopupController m_messageOverlay;
 
 
     private void Update()
@@ -18,4 +19,13 @@ public class UiManagerController : MonoBehaviour
     {
         m_gameOverOverlay.alpha = enabled ? 1f : 0f;
     }
+
+    public void ShowMessage(string message)
+    {
+        if (m_messageOverlay != null) 
+        { 
+            m_messageOverlay.Show(message);
+        }
+    }
+
 }

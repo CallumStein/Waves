@@ -18,6 +18,12 @@ public class GameManagerController : MonoBehaviour
     [SerializeField] private bool m_AllItemsCollected = false;
     [SerializeField] private Dictionary<CollectibleItem, bool> m_itemsCollected = new Dictionary<CollectibleItem, bool>();
 
+    [Header("Ending Messages")]
+    [SerializeField][TextArea(5, 5)] private string m_goodEndingText = "";
+    [SerializeField][TextArea(5, 5)] private string m_badEndingText = "";
+
+    public bool IsPlaying => m_currentState == GameState.Playing; // helper access property
+
     private void Awake()
     {
         // Singleton enforcement
@@ -36,6 +42,8 @@ public class GameManagerController : MonoBehaviour
         {
             m_itemsCollected[item] = false;
         }
+
+        SetGameState(GameState.Playing);
     }
 
     private void SetGameState(GameState state)
@@ -73,6 +81,7 @@ public class GameManagerController : MonoBehaviour
     {
         m_uiManager.SetStatic(true);
         Debug.Log("GAME OVER");
+        Time.timeScale = 0f;
     }
 
     public void EndGame()
@@ -80,10 +89,14 @@ public class GameManagerController : MonoBehaviour
         if (m_AllItemsCollected)
         {
             SetGameState(GameState.CompleteEnding);
+            m_uiManager.ShowEndingMessage(m_goodEndingText);
+            //Time.timeScale = 0f;
         }
         else
         {
             SetGameState(GameState.PartialEnding);
+            m_uiManager.ShowEndingMessage(m_badEndingText);
+            //Time.timeScale = 0f;
         }
 
         Debug.Log(m_currentState);

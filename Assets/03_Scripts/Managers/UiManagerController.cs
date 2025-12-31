@@ -28,4 +28,11 @@ public class UiManagerController : MonoBehaviour
         }
     }
 
+    public void ShowEndingMessage(string message)
+    {
+        if (m_messageOverlay != null)
+        {
+            m_messageOverlay.ShowEnding(message);
+        }
+    }
 }

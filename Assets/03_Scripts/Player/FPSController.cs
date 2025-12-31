@@ -55,6 +55,11 @@ public class FPSController : MonoBehaviour
 
     private void Update()
     {
+        if (!GameManagerController.Instance.IsPlaying)
+        {
+            return; // Only allow movement during game play
+        }
+
         HandleLook();
         HandleMovement();
         highlightTimer += Time.deltaTime;
@@ -102,6 +107,11 @@ public class FPSController : MonoBehaviour
 
     private void TryInteract()
     {
+        if (!GameManagerController.Instance.IsPlaying)
+        {
+            return; // Only allows interaction during gameplay
+        }
+
         if (currentTarget != null)
         {
             Debug.Log($"Interacting with {((MonoBehaviour)currentTarget).name}");

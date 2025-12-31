@@ -28,6 +28,14 @@ public class MessagePopupController : MonoBehaviour
         StartCoroutine(ShowRoutine());
     }
 
+    public void ShowEnding(string message)
+    {
+        gameObject.SetActive(true);
+        messageText.text = message;
+        StopAllCoroutines();
+        StartCoroutine(FadeIn());
+    }
+
     public void Hide()
     {
         StopAllCoroutines();

@@ -19,6 +19,11 @@ public class StalkerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!GameManagerController.Instance.IsPlaying)
+        {
+            return; // break early if not in gameplay
+        }
+
         // Move the stalker gameobject
         transform.Translate(m_direction * m_moveSpeed * Time.deltaTime);
     }
